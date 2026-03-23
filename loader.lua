@@ -1,7 +1,6 @@
 local HttpService = game:GetService("HttpService")
 
-local response = game:HttpGet("https://TON-URL-RENDER.onrender.com/api/load")
-
+local response = game:HttpGet("https://noax-backend-tta2.onrender.com/api/load")
 local ok, data = pcall(function()
     return HttpService:JSONDecode(response)
 end)
