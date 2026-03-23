@@ -1,16 +1,6 @@
-local Players = game:GetService("Players")
 local HttpService = game:GetService("HttpService")
 
-local player = Players.LocalPlayer
-if not player then
-    return
-end
-
-local userId = tostring(player.UserId)
-
-local url = "https://noax-backend-tta2.onrender.com/api/load?userId=" .. userId
-
-local response = game:HttpGet(url)
+local response = game:HttpGet("https://noax-backend.onrender.com/api/load")
 
 local ok, data = pcall(function()
     return HttpService:JSONDecode(response)
@@ -22,7 +12,7 @@ if not ok or not data then
 end
 
 if not data.ok then
-    warn(data.message or "Accès refusé")
+    warn(data.message or "Erreur")
     return
 end
 
